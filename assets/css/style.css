@@ -3,3 +3,7 @@ body{
     background-image: url("../img/bg.jpg");
     color: white;
 }
+
+.hide{
+    display: none;
+}
