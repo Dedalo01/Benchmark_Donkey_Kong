@@ -51,6 +51,22 @@ const questions = [
     },
   ];
 
+  const firstPage = document.querySelector("section")
+  const secondPage = document.querySelector("#quizContainer")
+  const thirdPage = document.querySelector("#resultsContainer")
+  const fourthPage = document.querySelector("#rateUs")
+
+  function hideShow(div1,div2){
+    div1.classList.add("hide")
+    div2.classList.remove("hide")
+    
+  }
+
+  const proceedButton = document.querySelector("#proceedBtn")
+  proceedButton.addEventListener("click", function(){hideShow(firstPage, secondPage)})
+  const rateUsButton = document.querySelector("#rateUsBtn")
+  rateUsButton.addEventListener("click", function() {hideShow(thirdPage, fourthPage)})
+
   let currentQuestion = 0;
   let score = 0;
   let wrongAnswers = 0;
@@ -116,6 +132,7 @@ const questions = [
     correctDiv.appendChild(numCorrectAnswers)
     wrongDiv.appendChild(numWrongAnswers)
     showCongratulations()
+    hideShow(secondPage, thirdPage)
   } 
 
   function shuffleArray(array) {
