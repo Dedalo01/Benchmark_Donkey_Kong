@@ -27,16 +27,16 @@
             </ul>
             <input type="checkbox">
             <label for="check"><span>I promise to answer myself without help from anyone</span></label>
-            <button>PROCEDI</button>
+            <button id="proceedBtn">PROCEDI</button>
         </section>
 
-        <div id="quizContainer">
+        <div id="quizContainer" class="hide">
             <div id="timer"></div>
             <h2>How can I create a <span>checkbox in HTML?</span></h2>
             <div id="quiz" class="question"></div>
             <div id="options" class="options"></div>
         </div>
-        <div id="resultsContainer">
+        <div id="resultsContainer" class="hide">
             <h3>Results</h3>
             <p>The summary of your answers:</p>
             <div id="correct-result">
@@ -47,9 +47,9 @@
             <div id="wrong-result">
                 <p>Wrong</p>
             </div>
-            <button><span>RATE US</span></button>
+            <button id="rateUsBtn"><span>RATE US</span></button>
         </div>
-        <div id="rateUs">
+        <div id="rateUs" class="hide">
             <div>
                 <h3>Tell us how it's going</h3>
                 <p>From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?</p>
