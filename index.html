@@ -11,7 +11,62 @@
 </head>
 
 <body>
-    <h1>PRIMO COMMIT</h1>
+    <header>
+        <img src="assets/img/epicode_logo.png" alt="epicode_logo">
+    </header>
+    <main>
+        <section>
+            <h1>Welcome to your exam</h1>
+            <h2>Instructions</h2>
+            <p>We don't expect most engineers to know the answers to all of these questions, so don't worry if you are
+                unsure of a few of them</p>
+            <ul>
+                <li>Each question is <span>timed</span> and can only be <span>answered once</span>.</li>
+                <li>Changing browser tab or opening other windows will <span>invalidate the question</span>.</li>
+                <li>This exam will take approx. <span>0-5 minutes</span>.</li>
+            </ul>
+            <input type="checkbox">
+            <label for="check"><span>I promise to answer myself without help from anyone</span></label>
+            <button>PROCEDI</button>
+        </section>
+
+        <div id="quizContainer">
+            <div id="timer"></div>
+            <h2>How can I create a <span>checkbox in HTML?</span></h2>
+            <div id="quiz" class="question"></div>
+            <div id="options" class="options"></div>
+        </div>
+        <div id="resultsContainer">
+            <h3>Results</h3>
+            <p>The summary of your answers:</p>
+            <div id="correct-result">
+                <p>Correct</p>
+            </div>
+            <!--qua ci va il doughnut diagram-->
+            <div id="donut"></div>
+            <div id="wrong-result">
+                <p>Wrong</p>
+            </div>
+            <button><span>RATE US</span></button>
+        </div>
+        <div id="rateUs">
+            <div>
+                <h3>Tell us how it's going</h3>
+                <p>From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?</p>
+            </div>
+            <div id="stars"></div>
+            <div>
+                <p>Leave us an open feedback about your experience so far</p>
+                <input type="text" name="comment" id="comment" placeholder="Write your comment here">
+                <button>MORE INFO</button>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
     <script src="assets/js/script.js"></script>
 </body>
 
