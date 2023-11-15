@@ -92,17 +92,31 @@ const questions = [
       showResult();
     }
   }
+    
 
-  function showResult() {
-    const correctResultContainer = document.getElementById('correct-result');
-    const wrongResultContainer = document.getElementById('wrong-result');
-    const totalQuestions = questions.length;
-    const correctPercentage = (score / totalQuestions) * 100;
-    const wrongPercentage = (wrongAnswers / totalQuestions) * 100;
 
-    correctResultContainer.textContent = `Correct (${correctPercentage.toFixed(2)}%) ${score}/10 questions`;
-    wrongResultContainer.textContent = `Wrong (${wrongPercentage.toFixed(2)}%) ${wrongAnswers}/10 questions`;
-  }
+  function showResult(){ //in this function the proceed button(div1) function is also need to be added for hidden/show next page
+    const totalQuestions = questions.length
+    let rightToFix = (score * 100) / totalQuestions
+    let wrongToFix = (wrongAnswers * 100) / totalQuestions
+    let rightPercentage = rightToFix.toFixed(1) //toFixed returns a string, so parseFloat needed
+    let wrongPercentage = wrongToFix.toFixed(1)
+    const correctDiv = document.querySelector("#correct-result") 
+    const wrongDiv = document.querySelector("#wrong-result p")
+    const rightPercent = document.createElement("p") //lui mi serve nell'if è il terzo p dentro al div di correct
+    const wrongPercent = document.createElement("p")
+    rightPercent.innerHTML = `${rightPercentage}&percnt;`
+    wrongPercent.innerHTML = `${wrongPercentage}&percnt;`
+    correctDiv.appendChild(rightPercent)
+    wrongDiv.appendChild(wrongPercent)
+    const numCorrectAnswers = document.createElement("p")
+    const numWrongAnswers = document.createElement("p")
+    numCorrectAnswers.innerText = `${score}/${totalQuestions} questions`
+    numWrongAnswers.innerText = `${wrongAnswers}/${totalQuestions} questions`
+    correctDiv.appendChild(numCorrectAnswers)
+    wrongDiv.appendChild(numWrongAnswers)
+    showCongratulations()
+  } 
 
   function shuffleArray(array) {
     // Algoritmo di Fisher-Yates per mescolare l'array
@@ -112,6 +126,23 @@ const questions = [
     }
     return array;
   }
+ //this function shows the paragraph inside the circular diagram in div3 
+  function showCongratulations(){
+    const circleAnswers = document.querySelector("#donut") //this needs to be fixed with the circular diagram
+    const rightAnswerInPercentage = document.querySelector("#correct-result p:nth-child(2)")
+    const resultPercent = rightAnswerInPercentage.textContent //I need the percentage of right answers
+    const resultPercentNum = parseInt(resultPercent)
+    const examResults = document.createElement("p")
+    if (resultPercentNum >= 60) { //the first two text rows have different CSS rules, inside the span tags
+        examResults.innerHTML = "<span>Congratulations!</span> <br> <span>You passed the exam!.</span> <br><br>We'll send you the certificate in few minutes. <br>Check your email (including promotions / spam folder)"
+        } else {
+            examResults.innerHTML = "<span>We're sorry!</span> <br> <span>You didn't pass the exam!</span> <br><br>Don't give up now, you can try again in the next exam period in a few months."
+        }
+        circleAnswers.appendChild(examResults)
+  } 
+
+   //the "rate us" button needs the function of "proceed" button
+   // example: rateusButton.addEventListener("click", proceed function(switch from div3 to div4))
 
   // Inizia il quiz
   loadQuestion();
