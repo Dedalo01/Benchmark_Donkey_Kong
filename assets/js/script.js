@@ -70,7 +70,7 @@ function showResult() {
   let rightPercentage = rightToFix.toFixed(1); //toFixed returns a string, so parseFloat needed
   let wrongPercentage = wrongToFix.toFixed(1);
   const correctDiv = document.querySelector("#correct-result");
-  const wrongDiv = document.querySelector("#wrong-result p");
+  const wrongDiv = document.querySelector("#wrong-result");
   const rightPercent = document.createElement("p"); //lui mi serve nell'if è il terzo p dentro al div di correct
   const wrongPercent = document.createElement("p");
   rightPercent.innerHTML = `${rightPercentage}&percnt;`;
