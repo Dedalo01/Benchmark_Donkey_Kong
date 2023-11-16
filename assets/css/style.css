@@ -123,3 +123,11 @@ section ul{
 .hide{
     display: none;
 }
+
+.divStar{
+    display: inline-block;
+}
+
+.star path {
+    fill: #0b113b;
+    }
