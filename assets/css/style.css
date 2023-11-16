@@ -9,7 +9,7 @@ body {
   display: none;
 } */
 
-/* timer animation */
+/* TIMER */
 .timer {
   position: absolute;
   top: 0;
@@ -53,31 +53,25 @@ body {
   font-weight: bold;
 }
 
-circle {
-  fill: none;
-  stroke: cornflowerblue;
-  stroke-width: 20px;
-  stroke-dasharray: 472px;
-  stroke-dashoffset: 0;
-}
-
-.animation {
-  animation: anim 30s linear forwards;
-}
-
 svg {
   position: absolute;
   top: 63.3%;
   left: 0;
 }
 
+.startAnimation {
+  stroke-dasharray: 472; /*472px*/
+  stroke-dashoffset: 0;
+  animation: anim 30s forwards linear;
+}
+
 @keyframes anim {
   from {
-    stroke-dashoffset: 0px;
+    stroke-dashoffset: 0;
   }
 
   to {
-    stroke-dashoffset: 472px;
+    stroke-dashoffset: 472;
   }
 }
 
@@ -91,7 +85,7 @@ svg {
   place-items: center;
   color: white;
 }
-/* ANSWER PROGRESS BAR */
+
 .circularProgressBar {
   position: relative;
   height: 250px;

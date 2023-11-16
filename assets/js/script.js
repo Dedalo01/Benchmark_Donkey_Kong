@@ -7,6 +7,7 @@ function hideShow(div1, div2) {
 }
 
 function loadQuestion() {
+  //resetAnimation();
   timerCount = TOTAL_SECONDS_TIMER;
   timer = setInterval(setTimer, SPEED_TIMER);
 
@@ -35,11 +36,15 @@ function selectAnswer(selectedOption) {
 
   if (selectedOption === currentQ.correct && timerCount != 0) {
     score++;
-    clearInterval(timer);
+    /* clearInterval(timer);
+    resetAnimation(); */
   } else {
     wrongAnswers++;
-    clearInterval(timer);
+    /*   clearInterval(timer);
+    resetAnimation(); */
   }
+
+  clearInterval(timer);
 
   currentQuestion++;
 
@@ -109,9 +114,9 @@ function showCongratulations() {
 
 function setTimer() {
   if (timerCount > 0) {
-    timerAnimation();
     timerCount--;
-    //timerDiv.innerText = timerCount;
+
+    timerNumber.innerText = timerCount;
   }
   console.log(timerCount);
 
@@ -121,13 +126,34 @@ function setTimer() {
     const shuffledOptions1 = shuffleArray(currentQ.options);
     clearInterval(timer);
     selectAnswer(shuffledOptions1);
+    resetAnimation();
   }
 }
 
 // Timer animation
-function timerAnimation() {
-  timerNumber.innerText = timerCount;
-  const circleAnimation = document.querySelector(".circle");
+/* function startTimerAnimation() {
+  if (circle.className != "startAnimation") {
+    circle.classList.add("startAnimation");
+  }
+  console.log("Ho avviato animazione");
+} */
+
+function resetAnimation() {
+  /*   const circleAnimation = document.querySelector(".timerAnimation");
+  if (circleAnimation.className == "startAnimation") {
+    circleAnimation.classList.remove("startAnimation");
+  }
+  console.log("ho resettato animazione"); */
+  circle.classList.remove("startAnimation");
+  circle.style.stroke = "rgb(108, 248, 248)";
+
+  void circle.offsetWidth;
+
+  setTimeout(() => {
+    circle.classList.add("startAnimation");
+  }, 10);
+
+  console.log("Resettata animazione");
 }
 
 // CORRECT ANSW CIRCLE
@@ -231,7 +257,7 @@ const timerDiv = document.querySelector("#timer");
 //animation timer
 const timerNumber = document.querySelector("#timerNumber");
 const timerSvg = document.querySelector("#timerSvg");
-console.log(timerSvg);
+/* console.log(timerSvg); */
 
 //DOM selection
 const firstPage = document.querySelector("section");
@@ -239,11 +265,14 @@ const secondPage = document.querySelector("#quizContainer");
 const thirdPage = document.querySelector("#resultsContainer");
 const fourthPage = document.querySelector("#rateUs");
 
-// CIRCULAR ANSWER
+// CIRCULAR ANSWER DOM
 let progressBar = document.querySelector("#answerProgressBar");
 let valueContainer = document.querySelector(
   "#answerProgressBar .valueContainer"
 );
+
+// TIMER DOM
+const circle = document.querySelector(".circle");
 
 // Btn selection
 const proceedButton = document.querySelector("#proceedBtn");
