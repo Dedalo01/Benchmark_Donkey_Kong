@@ -31,7 +31,25 @@
         </section>
 
         <div id="quizContainer" class="hide">
-            <div id="timer"></div>
+            <div id="timer">
+
+                <div class="skill">
+                    <div class="outer">
+                        <div class="inner">
+                            <div id="timerInfo">
+                                <span>Seconds</span>
+                                <span id="timerNumber">30</span>
+                                <span>remaining</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <svg id="timerSvg" height="160" width="160">
+                    <circle class="circle" cx="80" cy="80" r="70" stroke="rgb(108, 248, 248)" stroke-width="20px"
+                        stroke-linecap="round" />
+                </svg>
+            </div>
             <div id="quiz" class="question"></div>
             <div id="options" class="options"></div>
         </div>
@@ -42,7 +60,15 @@
                 <p>Correct</p>
             </div>
             <!--qua ci va il doughnut diagram-->
-            <div id="donut"></div>
+            <div id="donut">
+                <div class="container">
+                    <div id="answerProgressBar" class="circularProgressBar">
+                        <div class="valueContainer">
+                            0%
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="wrong-result">
                 <p>Wrong</p>
             </div>
