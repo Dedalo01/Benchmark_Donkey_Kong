@@ -119,6 +119,10 @@ section ul {
   fill: #0b113b;
 }
 
+.star path:hover{
+  fill: red
+}
+
 /* TIMER */
 .timer {
   position: absolute;
