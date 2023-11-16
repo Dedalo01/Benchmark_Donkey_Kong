@@ -2,76 +2,67 @@
 
 // testing, decommenta dopo finito
 function hideShow(div1, div2) {
-    div1.classList.add("hide");
-    div2.classList.remove("hide");
+  div1.classList.add("hide");
+  div2.classList.remove("hide");
 }
 
 function loadQuestion() {
-
   resetAnimation();
   timerCount = TOTAL_SECONDS_TIMER;
   timer = setInterval(setTimer, SPEED_TIMER);
 
+  const quizContainer = document.getElementById("quiz");
+  const optionsContainer = document.getElementById("options");
+  const currentQ = questions[currentQuestion];
+  const questionCounter = document.getElementById("questionCounter");
+  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
 
-    const quizContainer = document.getElementById("quiz");
-    const optionsContainer = document.getElementById("options");
-    const currentQ = questions[currentQuestion];
-    const questionCounter = document.getElementById("questionCounter");
-    questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
+  quizContainer.textContent = currentQ.question;
+  optionsContainer.innerHTML = "";
 
-    quizContainer.textContent = currentQ.question;
-    optionsContainer.innerHTML = "";
+  // Mescola le opzioni
+  const shuffledOptions = shuffleArray(currentQ.options);
 
-    // Mescola le opzioni
-    const shuffledOptions = shuffleArray(currentQ.options);
+  shuffledOptions.forEach((option) => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.className = "option";
 
-    shuffledOptions.forEach((option) => {
-        const button = document.createElement("button");
-        button.textContent = option;
-        button.className = "option";
-
-        button.addEventListener("click", () => selectAnswer(option));
-        optionsContainer.appendChild(button);
-    });
+    button.addEventListener("click", () => selectAnswer(option));
+    optionsContainer.appendChild(button);
+  });
 }
 
 function selectAnswer(selectedOption) {
-    const currentQ = questions[currentQuestion];
-
+  const currentQ = questions[currentQuestion];
 
   if (selectedOption === currentQ.correct && timerCount != 0) {
     score++;
   } else {
     wrongAnswers++;
   }
-
   clearInterval(timer);
-
   currentQuestion++;
+  currentQuestionNumber++;
 
-
-    currentQuestion++;
-    currentQuestionNumber++;
-
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } else {
-        showResult();
-    }
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
 }
 
 function shuffleArray(array) {
-    // Algoritmo di Fisher-Yates per mescolare l'array
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+  // Algoritmo di Fisher-Yates per mescolare l'array
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 // third page functions
 function showResult() {
-
   //in this function the proceed button(div1) function is also need to be added for hidden/show next page
   const totalQuestions = questions.length;
   let rightToFix = (score * 100) / totalQuestions;
@@ -136,7 +127,6 @@ function setTimer() {
   } else {
     timerNumber.innerText = timerCount;
   }
-
 }
 
 // Timer animation
@@ -174,71 +164,71 @@ function generateAnswerCircleProgressBar(wrongAnsw) {
 
 // COSTANT AND VARIABLES
 const questions = [
-    {
-        question: "What does CPU stand for?",
-        options: [
-            "Central Processing Unit",
-            "Central Process Unit",
-            "Computer Personal Unit",
-            "Central Processor Unit",
-        ],
-        correct: "Central Processing Unit",
-    },
-    {
-        question:
-            "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
-        options: ["Final", "Static", "Private", "Public"],
-        correct: "Final",
-    },
-    {
-        question: "The logo for Snapchat is a Bell.",
-        options: ["False", "True"],
-        correct: "False",
-    },
-    {
-        question:
-            "Pointers were not used in the original C programming language; they were added later on in C++.",
-        options: ["False", "True"],
-        correct: "False",
-    },
-    {
-        question:
-            "What is the most preferred image format used for logos in the Wikimedia database?",
-        options: [".svg", ".png", ".jpeg", ".gif"],
-        correct: ".svg",
-    },
-    {
-        question: "In web design, what does CSS stand for?",
-        options: [
-            "Cascading Style Sheet",
-            "Counter Strike: Source",
-            "Corrective Style Sheet",
-            "Computer Style Sheet",
-        ],
-        correct: "Cascading Style Sheet",
-    },
-    {
-        question:
-            "What is the code name for the mobile operating system Android 7.0?",
-        options: ["Nougat", "Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-        correct: "Nougat",
-    },
-    {
-        question: "On Twitter, what is the character limit for a Tweet?",
-        options: ["140", "120", "160", "100"],
-        correct: "140",
-    },
-    {
-        question: "Linux was first created as an alternative to Windows XP.",
-        options: ["False", "True"],
-        correct: "False",
-    },
-    {
-        question:
-            "Which programming language shares its name with an island in Indonesia?",
-        options: ["Java", "Python", "C", "Jakarta"],
-        correct: "Java",
-    },
+  {
+    question: "What does CPU stand for?",
+    options: [
+      "Central Processing Unit",
+      "Central Process Unit",
+      "Computer Personal Unit",
+      "Central Processor Unit",
+    ],
+    correct: "Central Processing Unit",
+  },
+  {
+    question:
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+    options: ["Final", "Static", "Private", "Public"],
+    correct: "Final",
+  },
+  {
+    question: "The logo for Snapchat is a Bell.",
+    options: ["False", "True"],
+    correct: "False",
+  },
+  {
+    question:
+      "Pointers were not used in the original C programming language; they were added later on in C++.",
+    options: ["False", "True"],
+    correct: "False",
+  },
+  {
+    question:
+      "What is the most preferred image format used for logos in the Wikimedia database?",
+    options: [".svg", ".png", ".jpeg", ".gif"],
+    correct: ".svg",
+  },
+  {
+    question: "In web design, what does CSS stand for?",
+    options: [
+      "Cascading Style Sheet",
+      "Counter Strike: Source",
+      "Corrective Style Sheet",
+      "Computer Style Sheet",
+    ],
+    correct: "Cascading Style Sheet",
+  },
+  {
+    question:
+      "What is the code name for the mobile operating system Android 7.0?",
+    options: ["Nougat", "Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+    correct: "Nougat",
+  },
+  {
+    question: "On Twitter, what is the character limit for a Tweet?",
+    options: ["140", "120", "160", "100"],
+    correct: "140",
+  },
+  {
+    question: "Linux was first created as an alternative to Windows XP.",
+    options: ["False", "True"],
+    correct: "False",
+  },
+  {
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
+    options: ["Java", "Python", "C", "Jakarta"],
+    correct: "Java",
+  },
 ];
 
 let currentQuestion = 0;
@@ -279,16 +269,14 @@ const rateUsButton = document.querySelector("#rateUsBtn");
 
 // EventListeners
 proceedButton.addEventListener("click", function () {
-    hideShow(firstPage, secondPage);
+  hideShow(firstPage, secondPage);
 });
 proceedButton.addEventListener("click", function () {
-    loadQuestion();
+  loadQuestion();
 });
 rateUsButton.addEventListener("click", function () {
-    hideShow(thirdPage, fourthPage);
-
+  hideShow(thirdPage, fourthPage);
 });
-
 
 const stelle = document.querySelectorAll(".singleStar");
 const divStars = document.querySelectorAll(".star");
@@ -297,44 +285,27 @@ console.log(isClicked);
 
 // starAnimation();
 for (let i = 0; i < stelle.length; i++) {
-
-    stelle[i].addEventListener("click", () => {
-        isClicked = true;
-    })
-    stelle[i].addEventListener("click", () => {
-        changeColor(i);
-    })
-
-};
-
-
-
+  stelle[i].addEventListener("click", () => {
+    isClicked = true;
+  });
+  stelle[i].addEventListener("click", () => {
+    changeColor(i);
+  });
+}
 
 function changeColor(index) {
-    for (let i = 0; i < divStars.length; i++) {
-        if (i <= index) {
-            divStars[i].classList.remove("star");
-        } else {
-            divStars[i].classList.add("star");
-        }
+  for (let i = 0; i < divStars.length; i++) {
+    if (i <= index) {
+      divStars[i].classList.remove("star");
+    } else {
+      divStars[i].classList.add("star");
     }
-    console.log(isClicked);
+  }
+  console.log(isClicked);
 }
 
 function removeStars() {
-    for (let i = 0; i < divStars.length; i++) {
-        divStars[i].classList.add("star");
-    }
+  for (let i = 0; i < divStars.length; i++) {
+    divStars[i].classList.add("star");
+  }
 }
-
-function starAnimation() {
-    if (isClicked == false) {
-        for (let i = 0; i < divStars.length; i++) {
-            divStars[i].addEventListener("mouseover", () => {
-                changeColor(i);
-
-            })
-        };
-    }
-}
-
