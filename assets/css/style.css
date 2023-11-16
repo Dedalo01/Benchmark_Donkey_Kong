@@ -131,3 +131,7 @@ section ul{
 .star path {
     fill: #0b113b;
     }
+
+.star ~ path:hover{
+    fill: #00ffff;
+}

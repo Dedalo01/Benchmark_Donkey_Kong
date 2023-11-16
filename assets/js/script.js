@@ -231,7 +231,16 @@ const divStars = document.querySelectorAll(".star");
 let isClicked = false;
 console.log(isClicked);
 
-// starAnimation();
+
+/* falseToTrue()
+function falseToTrue(){
+  if(isClicked === false){
+  starAnimation()
+  } else if(isClicked === true){
+
+  }
+} */
+
 for (let i = 0; i < stelle.length; i++) {
 
     stelle[i].addEventListener("click", () => {
@@ -242,9 +251,6 @@ for (let i = 0; i < stelle.length; i++) {
     })
 
 };
-
-
-
 
 function changeColor(index) {
     for (let i = 0; i < divStars.length; i++) {
@@ -262,15 +268,17 @@ function removeStars() {
         divStars[i].classList.add("star");
     }
 }
-
+/* 
 function starAnimation() {
-    if (isClicked == false) {
+  if(isClicked === false){
         for (let i = 0; i < divStars.length; i++) {
             divStars[i].addEventListener("mouseover", () => {
                 changeColor(i);
 
-            })
+            })}
         };
-    }
 }
+ */
+
+
 
