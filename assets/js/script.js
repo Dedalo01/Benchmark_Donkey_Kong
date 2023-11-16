@@ -14,6 +14,8 @@ function loadQuestion() {
   const quizContainer = document.getElementById("quiz");
   const optionsContainer = document.getElementById("options");
   const currentQ = questions[currentQuestion];
+  const questionCounter = document.getElementById("questionCounter");
+  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
 
   quizContainer.textContent = currentQ.question;
   optionsContainer.innerHTML = "";
@@ -39,10 +41,9 @@ function selectAnswer(selectedOption) {
   } else {
     wrongAnswers++;
   }
-
   clearInterval(timer);
-
   currentQuestion++;
+  currentQuestionNumber++;
 
   if (currentQuestion < questions.length) {
     loadQuestion();
@@ -231,6 +232,7 @@ const questions = [
 ];
 
 let currentQuestion = 0;
+let currentQuestionNumber = 1;
 let score = 0;
 let wrongAnswers = 0;
 // timer setup
@@ -275,3 +277,45 @@ proceedButton.addEventListener("click", function () {
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
 });
+
+const stelle = document.querySelectorAll(".singleStar");
+const divStars = document.querySelectorAll(".star");
+let isClicked = false;
+console.log(isClicked);
+
+// starAnimation();
+for (let i = 0; i < stelle.length; i++) {
+  stelle[i].addEventListener("click", () => {
+    isClicked = true;
+  });
+  stelle[i].addEventListener("click", () => {
+    changeColor(i);
+  });
+}
+
+function changeColor(index) {
+  for (let i = 0; i < divStars.length; i++) {
+    if (i <= index) {
+      divStars[i].classList.remove("star");
+    } else {
+      divStars[i].classList.add("star");
+    }
+  }
+  console.log(isClicked);
+}
+
+function removeStars() {
+  for (let i = 0; i < divStars.length; i++) {
+    divStars[i].classList.add("star");
+  }
+}
+
+function starAnimation() {
+  if (isClicked == false) {
+    for (let i = 0; i < divStars.length; i++) {
+      divStars[i].addEventListener("mouseover", () => {
+        changeColor(i);
+      });
+    }
+  }
+}
