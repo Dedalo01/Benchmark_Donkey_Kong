@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="assets/css/reset.css">
+    
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -16,9 +16,9 @@
     </header>
     <main>
         <section>
-            <h1>Welcome to your exam</h1>
+            <h1><span>Welcome to</span>  <br> your exam</h1>
             <h2>Instructions</h2>
-            <p>We don't expect most engineers to know the answers to all of these questions, so don't worry if you are
+            <p>We don't expect most engineers to know the answers to all of these <br> questions, so don't worry if you are
                 unsure of a few of them</p>
             <ul>
                 <li>Each question is <div>timed</div> and can only be <div>answered once</div>.</li>
@@ -26,15 +26,16 @@
                 <li>This exam will take approx. <div>0-5 minutes</div>.</li>
             </ul>
             <input type="checkbox">
-            <label for="check">
-                <div>I promise to answer myself without help from anyone</div>
-            </label>
-            <button>PROCEDI</button>
+            <label for="check"><span>I promise to answer myself without help from anyone</span></label>
+
+            <button id="proceedBtn" class="blueButton">PROCEDI</button>
+
         </section>
         <div id="quizContainer" class="hide">
             <div id="timer"></div>
             <div id="quiz" class="question"></div>
             <div id="options" class="options"></div>
+            <p id="questionCounter"></p>
         </div>
         <div id="resultsContainer" class="hide">
             <h3>Results</h3>
@@ -47,7 +48,9 @@
             <div id="wrong-result">
                 <p>Wrong</p>
             </div>
-            <button id="rateUsBtn"><span>RATE US</span></button>
+
+            <button id="rateUsBtn" class="blueButton"><span>RATE US</span></button>
+
         </div>
         <div id="rateUs" class="hide">
             <div>

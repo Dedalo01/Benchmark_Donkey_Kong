@@ -1,8 +1,8 @@
 // FUNCTIONS
 
 function hideShow(div1, div2) {
-//   div1.classList.add("hide");
-//   div2.classList.remove("hide");
+  div1.classList.add("hide");
+  div2.classList.remove("hide");
 }
 
 function loadQuestion() {
@@ -12,6 +12,8 @@ function loadQuestion() {
   const quizContainer = document.getElementById("quiz");
   const optionsContainer = document.getElementById("options");
   const currentQ = questions[currentQuestion];
+  const questionCounter = document.getElementById("questionCounter");
+  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
 
   quizContainer.textContent = currentQ.question;
   optionsContainer.innerHTML = "";
@@ -31,6 +33,7 @@ function loadQuestion() {
 
 function selectAnswer(selectedOption) {
   const currentQ = questions[currentQuestion];
+  
 
   if (selectedOption === currentQ.correct && timerCount != 0) {
     score++;
@@ -41,6 +44,7 @@ function selectAnswer(selectedOption) {
   }
 
   currentQuestion++;
+  currentQuestionNumber++;
 
   if (currentQuestion < questions.length) {
     loadQuestion();
@@ -189,6 +193,7 @@ const questions = [
 ];
 
 let currentQuestion = 0;
+let currentQuestionNumber = 1;
 let score = 0;
 let wrongAnswers = 0;
 // timer setup
@@ -217,35 +222,31 @@ proceedButton.addEventListener("click", function () {
 });
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
+
 });
 
-let maxStars = 10; // Numero massimo di stelle
-let currentRating = 0;
 
 const stelle = document.querySelectorAll(".stars");
-/* console.log(stelle); */
-const divStars = document.querySelectorAll(".star");
-console.log(divStars);
-for (let i = 0; i < stelle.length; i++) {
-  stelle[i].addEventListener("click", () => {
-    changeColor(i);
-  });
-}
+    const divStars = document.querySelectorAll(".star");
 
-function changeColor(index) {
-  for (let i = 0; i <= index; i++) {
-    if (divStars[index].className == "star") {
-      divStars[i].classList.remove("star");
-    } else {
-      removeColor();
+    for (let i = 0; i < stelle.length; i++) {
+        stelle[i].addEventListener("click", () => {
+            changeColor(i);
+        });
     }
-  }
-}
 
-function removeColor() {
-  for (let i = divStars.length - 1; i >= 0; i++) {
-    if (divStars[i].className != "star") {
-      divStars[i].classList.add("star");
+    function changeColor(index) {
+        for (let i = 0; i < divStars.length; i++) {
+            if (i <= index) {
+                divStars[i].classList.remove("star");
+            } else {
+                divStars[i].classList.add("star");
+            }
+        }
     }
-  }
-}
+
+    function removeStars(){
+        for (let i = 0; i < divStars.length; i++) {
+            divStars[i].classList.add("star");
+        }
+    }
