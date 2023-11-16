@@ -124,6 +124,10 @@ section ul{
     display: none;
 }
 
+.divStar{
+    display: inline-block;
+}
+
 .star path {
     fill: #0b113b;
     }

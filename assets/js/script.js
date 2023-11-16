@@ -226,7 +226,7 @@ rateUsButton.addEventListener("click", function () {
 });
 
 
-const stelle = document.querySelectorAll(".stars");
+const stelle = document.querySelectorAll(".singleStar");
 const divStars = document.querySelectorAll(".star");
 let isClicked = false;
 console.log(isClicked);
