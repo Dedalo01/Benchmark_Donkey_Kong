@@ -2,12 +2,12 @@
 
 // testing, decommenta dopo finito
 function hideShow(div1, div2) {
-  /*   div1.classList.add("hide");
-  div2.classList.remove("hide"); */
+  div1.classList.add("hide");
+  div2.classList.remove("hide");
 }
 
 function loadQuestion() {
-  //resetAnimation();
+  resetAnimation();
   timerCount = TOTAL_SECONDS_TIMER;
   timer = setInterval(setTimer, SPEED_TIMER);
 
@@ -36,12 +36,8 @@ function selectAnswer(selectedOption) {
 
   if (selectedOption === currentQ.correct && timerCount != 0) {
     score++;
-    /* clearInterval(timer);
-    resetAnimation(); */
   } else {
     wrongAnswers++;
-    /*   clearInterval(timer);
-    resetAnimation(); */
   }
 
   clearInterval(timer);
@@ -115,8 +111,7 @@ function showCongratulations() {
 function setTimer() {
   if (timerCount > 0) {
     timerCount--;
-
-    timerNumber.innerText = timerCount;
+    circle.classList.add("startAnimation");
   }
   console.log(timerCount);
 
@@ -124,26 +119,18 @@ function setTimer() {
     // manda avanti domanda
     const currentQ = questions[currentQuestion];
     const shuffledOptions1 = shuffleArray(currentQ.options);
+    circle.style.stroke = "rgb(108, 248, 248)";
     clearInterval(timer);
     selectAnswer(shuffledOptions1);
     resetAnimation();
+  } else {
+    timerNumber.innerText = timerCount;
   }
 }
 
 // Timer animation
-/* function startTimerAnimation() {
-  if (circle.className != "startAnimation") {
-    circle.classList.add("startAnimation");
-  }
-  console.log("Ho avviato animazione");
-} */
 
 function resetAnimation() {
-  /*   const circleAnimation = document.querySelector(".timerAnimation");
-  if (circleAnimation.className == "startAnimation") {
-    circleAnimation.classList.remove("startAnimation");
-  }
-  console.log("ho resettato animazione"); */
   circle.classList.remove("startAnimation");
   circle.style.stroke = "rgb(108, 248, 248)";
 
