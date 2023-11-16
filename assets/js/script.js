@@ -13,7 +13,7 @@ function loadQuestion() {
   const optionsContainer = document.getElementById("options");
   const currentQ = questions[currentQuestion];
   const questionCounter = document.getElementById("questionCounter");
-  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094">/${questions.length}</span>`;
+  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
 
   quizContainer.textContent = currentQ.question;
   optionsContainer.innerHTML = "";
