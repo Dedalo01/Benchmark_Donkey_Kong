@@ -222,4 +222,6 @@ proceedButton.addEventListener("click", function () {
 });
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
+
 });
+
