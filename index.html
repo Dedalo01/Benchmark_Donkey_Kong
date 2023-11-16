@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Benchmark Donkey kong</title>
 
-    
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -16,9 +16,10 @@
     </header>
     <main>
         <section>
-            <h1><span>Welcome to</span>  <br> your exam</h1>
+            <h1><span>Welcome to</span> <br> your exam</h1>
             <h2>Instructions</h2>
-            <p>We don't expect most engineers to know the answers to all of these <br> questions, so don't worry if you are
+            <p>We don't expect most engineers to know the answers to all of these <br> questions, so don't worry if you
+                are
                 unsure of a few of them</p>
             <ul>
                 <li>Each question is <div>timed</div> and can only be <div>answered once</div>.</li>
@@ -32,7 +33,27 @@
 
         </section>
         <div id="quizContainer" class="hide">
-            <div id="timer"></div>
+            <div id="timer">
+
+                <div class="skill">
+                    <div class="outer">
+                        <div class="inner">
+                            <div id="timerInfo">
+                                <span>Seconds</span>
+                                <span id="timerNumber">30</span>
+                                <span>remaining</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timerAnimation">
+                    <svg id="timerSvg" height="160" width="160">
+                        <circle class="circle" cx="80" cy="80" r="70" stroke="rgb(108, 248, 248)" stroke-width="20px"
+                            fill="none" />
+                    </svg>
+                </div>
+            </div>
             <div id="quiz" class="question"></div>
             <div id="options" class="options"></div>
             <p id="questionCounter"></p>
@@ -44,7 +65,15 @@
                 <p>Correct</p>
             </div>
             <!--qua ci va il doughnut diagram-->
-            <div id="donut"></div>
+            <div id="donut">
+                <div class="container">
+                    <div id="answerProgressBar" class="circularProgressBar">
+                        <div class="valueContainer">
+                            <!-- generated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="wrong-result">
                 <p>Wrong</p>
             </div>
