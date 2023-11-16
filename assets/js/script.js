@@ -1,8 +1,8 @@
 // FUNCTIONS
 
 function hideShow(div1, div2) {
-  div1.classList.add("hide");
-  div2.classList.remove("hide");
+//   div1.classList.add("hide");
+//   div2.classList.remove("hide");
 }
 
 function loadQuestion() {
@@ -218,39 +218,34 @@ proceedButton.addEventListener("click", function () {
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
 });
+
 let maxStars = 10; // Numero massimo di stelle
-  let currentRating = 0;
+let currentRating = 0;
 
-  function generateStars() {
-    let starRatingDiv = document.getElementById('starRating');
+const stelle = document.querySelectorAll(".stars");
+/* console.log(stelle); */
+const divStars = document.querySelectorAll(".star");
+console.log(divStars);
+for (let i = 0; i < stelle.length; i++) {
+  stelle[i].addEventListener("click", () => {
+    changeColor(i);
+  });
+}
 
-    for (let i = 1; i <= maxStars; i++) {
-      let star = document.createElement('img');
-      star.className = 'star';
-      star.src = "assets\star.svg"; 
-      star.alt = 'Star';
-      star.setAttribute('data-rating', i);
-
-      // Aggiungi un gestore di eventi per il clic su ogni stella
-      star.addEventListener('click', function() {
-        rateStar(i);
-      });
-
-      starRatingDiv.appendChild(star);
+function changeColor(index) {
+  for (let i = 0; i <= index; i++) {
+    if (divStars[index].className == "star") {
+      divStars[i].classList.remove("star");
+    } else {
+      removeColor();
     }
   }
+}
 
-  function rateStar(rating) {
-    currentRating = rating;
-    updateRatingDisplay();
+function removeColor() {
+  for (let i = divStars.length - 1; i >= 0; i++) {
+    if (divStars[i].className != "star") {
+      divStars[i].classList.add("star");
+    }
   }
-
-  function updateRatingDisplay() {
-    document.getElementById('ratingValue').innerText = 'Rating: ' + currentRating;
-  }
-
-  window.onload = function() {
-    generateStars();
-  };
-
-
+}

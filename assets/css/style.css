@@ -4,6 +4,10 @@ body{
     color: white;
 }
 
-.hide{
+/* .hide{
     display: none;
-}
+} */
+
+.star path {
+    fill: red;
+  }
