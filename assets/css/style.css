@@ -4,8 +4,12 @@ body{
     background-image: url("/assets/img/bg.jpg");
     background-size: 100%;
     color: white;
-    font-family: 'Inter' sans-serif;
+    font-family: 'Outfit', sans-serif;
     }
+
+section > p, ul{
+ font-family: 'Inter', sans-serif;
+}  
 
 header img{
     width: 15%;
@@ -20,7 +24,7 @@ section{
 
 section h1{
     font-size: 400%;
-    font-family: 'Outfit' sans-serif;
+    
 }
 
 section h2{
@@ -28,8 +32,8 @@ section h2{
     padding-top: 0.8%;
     color: #900080;
     font-weight: bold;
-    font-family:'Outfit' sans-serif;
 }
+
 section ul{
     padding-top: 6%;
     list-style:circle;
@@ -44,6 +48,7 @@ section ul{
    font-size: 120%;
    background-color: transparent;
    color: white;
+   font-family: 'Inter', sans-serif;
 }
 
 .blueButton:hover{
@@ -56,21 +61,15 @@ section ul{
     
 }
 
-#resultsContainer{
-   text-align: center;
-   font-size: xx-large;
-}
-
-#resultsContainer h3{
-    font-family: 'Outfit' sans-serif;
+#quizContainer button{
+    font-family: 'Inter', sans-serif;
 }
 
 
-
-#rateUs{
-    text-align: center;
-    font-size: 160%;
+#donut p{
+    font-family: 'Inter', sans-serif;
 }
+
 
 #comment{
     background-color: transparent;
@@ -80,9 +79,6 @@ section ul{
     text-decoration:underline;
 } 
 
-#rateUs h3{
-    font-family: 'Outfit' sans-serif;
-}
 
 .hide{
     display: none;
