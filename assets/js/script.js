@@ -280,32 +280,37 @@ rateUsButton.addEventListener("click", function () {
 
 const stelle = document.querySelectorAll(".singleStar");
 const divStars = document.querySelectorAll(".star");
-let isClicked = false;
-console.log(isClicked);
+let clicked = false
 
-// starAnimation();
 for (let i = 0; i < stelle.length; i++) {
-  stelle[i].addEventListener("click", () => {
-    isClicked = true;
-  });
-  stelle[i].addEventListener("click", () => {
-    changeColor(i);
-  });
-}
+  if(clicked === false){
+    stelle[i].addEventListener("mouseover", () => {
+        changeColor(i);
+    })}
+    stelle[i].addEventListener("click", () => {
+        changeColorClick(i);
+    })
+};
 
 function changeColor(index) {
-  for (let i = 0; i < divStars.length; i++) {
-    if (i <= index) {
-      divStars[i].classList.remove("star");
-    } else {
-      divStars[i].classList.add("star");
+  if(clicked === true){
+    return
+  }
+    for (let i = 0; i < divStars.length; i++) {
+        if (i <= index) {
+            divStars[i].classList.remove("star");
+        } else {
+            divStars[i].classList.add("star");
+        }
     }
-  }
-  console.log(isClicked);
 }
-
-function removeStars() {
-  for (let i = 0; i < divStars.length; i++) {
-    divStars[i].classList.add("star");
-  }
+function changeColorClick(index) {
+  clicked = true
+    for (let i = 0; i < divStars.length; i++) {
+        if (i <= index) {
+            divStars[i].classList.remove("star");
+        } else {
+            divStars[i].classList.add("star");
+        }
+    }
 }
