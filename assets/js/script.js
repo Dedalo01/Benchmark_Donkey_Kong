@@ -2,7 +2,10 @@
 
 // testing, decommenta dopo finito
 function hideShow(div1, div2) {
+  div1.classList.remove("addDisplayFlex");
   div1.classList.add("hide");
+
+  div2.classList.add("addDisplayFlex");
   div2.classList.remove("hide");
 }
 
@@ -100,11 +103,16 @@ function showCongratulations() {
   const examResults = document.createElement("p");
   if (resultPercentNum >= 60) {
     //the first two text rows have different CSS rules, inside the span tags
-    examResults.innerHTML =
-      "<span>Congratulations!</span> <br> <span>You passed the exam!.</span> <br><br>We'll send you the certificate in few minutes. <br>Check your email (including promotions / spam folder)";
+    examResults.innerHTML = `<h4>Congratulations!</h4>
+      <h5>You passed the exam!.</h5>
+      <p>We'll send you the certificate in few minutes.
+      Check your email (including promotions / spam folder)</p>
+      `;
   } else {
-    examResults.innerHTML =
-      "<span>We're sorry!</span> <br> <span>You didn't pass the exam!</span> <br><br>Don't give up now, you can try again in the next exam period in a few months.";
+    examResults.innerHTML = `<h4>We're sorry!</h4>
+      <h5>You didn't pass the exam!</h5>
+      <p>Don't give up now, you can try again in the next exam period in a few months.</p>
+      `;
   }
   circleAnswers.appendChild(examResults);
 }
@@ -268,49 +276,56 @@ const proceedButton = document.querySelector("#proceedBtn");
 const rateUsButton = document.querySelector("#rateUsBtn");
 
 // EventListeners
+
 proceedButton.addEventListener("click", function () {
-  hideShow(firstPage, secondPage);
+  const checkbox = document.getElementById("check");
+  if (checkbox.checked) {
+    hideShow(firstPage, secondPage);
+    loadQuestion();
+  }
 });
-proceedButton.addEventListener("click", function () {
-  loadQuestion();
+rateUsButton.addEventListener("click", function () {
+  hideShow(thirdPage, fourthPage);
 });
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
 });
 
+// STARS
 const stelle = document.querySelectorAll(".singleStar");
 const divStars = document.querySelectorAll(".star");
-let clicked = false
+let clicked = false;
 
 for (let i = 0; i < stelle.length; i++) {
-  if(clicked === false){
+  if (clicked === false) {
     stelle[i].addEventListener("mouseover", () => {
-        changeColor(i);
-    })}
-    stelle[i].addEventListener("click", () => {
-        changeColorClick(i);
-    })
-};
+      changeColor(i);
+    });
+  }
+  stelle[i].addEventListener("click", () => {
+    changeColorClick(i);
+  });
+}
 
 function changeColor(index) {
-  if(clicked === true){
-    return
+  if (clicked === true) {
+    return;
   }
-    for (let i = 0; i < divStars.length; i++) {
-        if (i <= index) {
-            divStars[i].classList.remove("star");
-        } else {
-            divStars[i].classList.add("star");
-        }
+  for (let i = 0; i < divStars.length; i++) {
+    if (i <= index) {
+      divStars[i].classList.remove("star");
+    } else {
+      divStars[i].classList.add("star");
     }
+  }
 }
 function changeColorClick(index) {
-  clicked = true
-    for (let i = 0; i < divStars.length; i++) {
-        if (i <= index) {
-            divStars[i].classList.remove("star");
-        } else {
-            divStars[i].classList.add("star");
-        }
+  clicked = true;
+  for (let i = 0; i < divStars.length; i++) {
+    if (i <= index) {
+      divStars[i].classList.remove("star");
+    } else {
+      divStars[i].classList.add("star");
     }
+  }
 }
