@@ -1,5 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap');
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
     background-image: url("/assets/img/bg.jpg");
+    background-size: 100%;
     color: white;
+    font-family: 'Inter' sans-serif;
+    }
+
+header img{
+    width: 15%;
+    height: auto;
+    padding-left: 7%;
+    padding-top: 3%;
 }
+
+section{
+    padding-left: 7%;
+}
+
+section h1{
+    font-size: 400%;
+    font-family: 'Outfit' sans-serif;
+}
+
+section h2{
+    font-size: 150%;
+    padding-top: 0.8%;
+    color: #900080;
+    font-weight: bold;
+    font-family:'Outfit' sans-serif;
+}
+section ul{
+    padding-top: 6%;
+    list-style:circle;
+    margin-bottom: 6%;
+}
+
+.blueButton{
+   padding: 0% 3%;
+   margin-left: 80%;
+   margin-bottom: 11%;
+   border-style: solid;
+   font-size: 170%;
+   background-color: aqua;
+}
+
+#quizContainer{
+    font-size: xx-large;
+    text-align: center;
+    
+}
+
+#resultsContainer{
+   text-align: center;
+   font-size: xx-large;
+    display:none  ;
+}
+
+#resultsContainer h3{
+    font-family: 'Outfit' sans-serif;
+}
+
+#resultsContainer button{
+    border-style: solids;
+    font-size: 120%;
+    background-color: transparent;
+    color: white;
+    padding: 0% 3%;
+}
+
+#rateUs{
+    text-align: center;
+    font-size: 160%;
+}
+
+#comment{
+    background-color: transparent;
+    color: grey;
+    padding: 0% 5%;
+    border-style: none;
+    text-decoration:underline;
+} 
+
+#rateUs h3{
+    font-family: 'Outfit' sans-serif;
+}
+
+.blueButton2{
+    border-style: solid;
+   font-size: 170%;
+   background-color: aqua;
+}
+
+
+
+
