@@ -12,6 +12,8 @@ function loadQuestion() {
   const quizContainer = document.getElementById("quiz");
   const optionsContainer = document.getElementById("options");
   const currentQ = questions[currentQuestion];
+  const questionCounter = document.getElementById("questionCounter");
+  questionCounter.innerHTML = `QUESTION ${currentQuestionNumber}<span style="color: #D20094"> / ${questions.length}</span>`;
 
   quizContainer.textContent = currentQ.question;
   optionsContainer.innerHTML = "";
@@ -31,6 +33,7 @@ function loadQuestion() {
 
 function selectAnswer(selectedOption) {
   const currentQ = questions[currentQuestion];
+  
 
   if (selectedOption === currentQ.correct && timerCount != 0) {
     score++;
@@ -41,6 +44,7 @@ function selectAnswer(selectedOption) {
   }
 
   currentQuestion++;
+  currentQuestionNumber++;
 
   if (currentQuestion < questions.length) {
     loadQuestion();
@@ -189,6 +193,7 @@ const questions = [
 ];
 
 let currentQuestion = 0;
+let currentQuestionNumber = 1;
 let score = 0;
 let wrongAnswers = 0;
 // timer setup
