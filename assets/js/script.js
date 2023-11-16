@@ -1,13 +1,17 @@
 // FUNCTIONS
 
+// testing, decommenta dopo finito
 function hideShow(div1, div2) {
     div1.classList.add("hide");
     div2.classList.remove("hide");
 }
 
 function loadQuestion() {
-    timerCount = TOTAL_SECONDS_TIMER;
-    timer = setInterval(setTimer, SPEED_TIMER);
+
+  resetAnimation();
+  timerCount = TOTAL_SECONDS_TIMER;
+  timer = setInterval(setTimer, SPEED_TIMER);
+
 
     const quizContainer = document.getElementById("quiz");
     const optionsContainer = document.getElementById("options");
@@ -35,13 +39,16 @@ function selectAnswer(selectedOption) {
     const currentQ = questions[currentQuestion];
 
 
-    if (selectedOption === currentQ.correct && timerCount != 0) {
-        score++;
-        clearInterval(timer);
-    } else {
-        wrongAnswers++;
-        clearInterval(timer);
-    }
+  if (selectedOption === currentQ.correct && timerCount != 0) {
+    score++;
+  } else {
+    wrongAnswers++;
+  }
+
+  clearInterval(timer);
+
+  currentQuestion++;
+
 
     currentQuestion++;
     currentQuestionNumber++;
@@ -64,63 +71,105 @@ function shuffleArray(array) {
 
 // third page functions
 function showResult() {
-    //in this function the proceed button(div1) function is also need to be added for hidden/show next page
-    const totalQuestions = questions.length;
-    let rightToFix = (score * 100) / totalQuestions;
-    let wrongToFix = (wrongAnswers * 100) / totalQuestions;
-    let rightPercentage = rightToFix.toFixed(1); //toFixed returns a string, so parseFloat needed
-    let wrongPercentage = wrongToFix.toFixed(1);
-    const correctDiv = document.querySelector("#correct-result");
-    const wrongDiv = document.querySelector("#wrong-result p");
-    const rightPercent = document.createElement("p"); //lui mi serve nell'if è il terzo p dentro al div di correct
-    const wrongPercent = document.createElement("p");
-    rightPercent.innerHTML = `${rightPercentage}&percnt;`;
-    wrongPercent.innerHTML = `${wrongPercentage}&percnt;`;
-    correctDiv.appendChild(rightPercent);
-    wrongDiv.appendChild(wrongPercent);
-    const numCorrectAnswers = document.createElement("p");
-    const numWrongAnswers = document.createElement("p");
-    numCorrectAnswers.innerText = `${score}/${totalQuestions} questions`;
-    numWrongAnswers.innerText = `${wrongAnswers}/${totalQuestions} questions`;
-    correctDiv.appendChild(numCorrectAnswers);
-    wrongDiv.appendChild(numWrongAnswers);
-    showCongratulations();
-    hideShow(secondPage, thirdPage);
+
+  //in this function the proceed button(div1) function is also need to be added for hidden/show next page
+  const totalQuestions = questions.length;
+  let rightToFix = (score * 100) / totalQuestions;
+  let wrongToFix = (wrongAnswers * 100) / totalQuestions;
+  let rightPercentage = rightToFix.toFixed(1); //toFixed returns a string, so parseFloat needed
+  let wrongPercentage = wrongToFix.toFixed(1);
+  const correctDiv = document.querySelector("#correct-result");
+  const wrongDiv = document.querySelector("#wrong-result p");
+  const rightPercent = document.createElement("p"); //lui mi serve nell'if è il terzo p dentro al div di correct
+  const wrongPercent = document.createElement("p");
+  rightPercent.innerHTML = `${rightPercentage}&percnt;`;
+  // added gae
+  generateAnswerCircleProgressBar(parseInt(wrongToFix));
+  // end added gae
+  wrongPercent.innerHTML = `${wrongPercentage}&percnt;`;
+  correctDiv.appendChild(rightPercent);
+  wrongDiv.appendChild(wrongPercent);
+  const numCorrectAnswers = document.createElement("p");
+  const numWrongAnswers = document.createElement("p");
+  numCorrectAnswers.innerText = `${score}/${totalQuestions} questions`;
+  numWrongAnswers.innerText = `${wrongAnswers}/${totalQuestions} questions`;
+  correctDiv.appendChild(numCorrectAnswers);
+  wrongDiv.appendChild(numWrongAnswers);
+  showCongratulations();
+  hideShow(secondPage, thirdPage);
 }
 //this function shows the paragraph inside the circular diagram in div3
 function showCongratulations() {
-    const circleAnswers = document.querySelector("#donut"); //this needs to be fixed with the circular diagram
-    const rightAnswerInPercentage = document.querySelector(
-        "#correct-result p:nth-child(2)"
-    );
-    const resultPercent = rightAnswerInPercentage.textContent; //I need the percentage of right answers
-    const resultPercentNum = parseInt(resultPercent);
-    const examResults = document.createElement("p");
-    if (resultPercentNum >= 60) {
-        //the first two text rows have different CSS rules, inside the span tags
-        examResults.innerHTML =
-            "<span>Congratulations!</span> <br> <span>You passed the exam!.</span> <br><br>We'll send you the certificate in few minutes. <br>Check your email (including promotions / spam folder)";
-    } else {
-        examResults.innerHTML =
-            "<span>We're sorry!</span> <br> <span>You didn't pass the exam!</span> <br><br>Don't give up now, you can try again in the next exam period in a few months.";
-    }
-    circleAnswers.appendChild(examResults);
+  const circleAnswers = document.querySelector(".valueContainer"); //this needs to be fixed with the circular diagram
+  const rightAnswerInPercentage = document.querySelector(
+    "#correct-result p:nth-child(2)"
+  );
+  const resultPercent = rightAnswerInPercentage.textContent; //I need the percentage of right answers
+  const resultPercentNum = parseInt(resultPercent);
+  const examResults = document.createElement("p");
+  if (resultPercentNum >= 60) {
+    //the first two text rows have different CSS rules, inside the span tags
+    examResults.innerHTML =
+      "<span>Congratulations!</span> <br> <span>You passed the exam!.</span> <br><br>We'll send you the certificate in few minutes. <br>Check your email (including promotions / spam folder)";
+  } else {
+    examResults.innerHTML =
+      "<span>We're sorry!</span> <br> <span>You didn't pass the exam!</span> <br><br>Don't give up now, you can try again in the next exam period in a few months.";
+  }
+  circleAnswers.appendChild(examResults);
 }
 
 function setTimer() {
-    if (timerCount > 0) {
-        timerCount--;
-        timerDiv.innerText = timerCount;
-    }
-    console.log(timerCount);
+  if (timerCount > 0) {
+    timerCount--;
+    circle.classList.add("startAnimation");
+  }
+  console.log(timerCount);
 
-    if (timerCount == 0) {
-        // manda avanti domanda
-        const currentQ = questions[currentQuestion];
-        const shuffledOptions1 = shuffleArray(currentQ.options);
-        clearInterval(timer);
-        selectAnswer(shuffledOptions1);
+  if (timerCount == 0) {
+    // manda avanti domanda
+    const currentQ = questions[currentQuestion];
+    const shuffledOptions1 = shuffleArray(currentQ.options);
+    circle.style.stroke = "rgb(108, 248, 248)";
+    clearInterval(timer);
+    selectAnswer(shuffledOptions1);
+    resetAnimation();
+  } else {
+    timerNumber.innerText = timerCount;
+  }
+
+}
+
+// Timer animation
+
+function resetAnimation() {
+  circle.classList.remove("startAnimation");
+  circle.style.stroke = "rgb(108, 248, 248)";
+
+  void circle.offsetWidth;
+
+  setTimeout(() => {
+    circle.classList.add("startAnimation");
+  }, 10);
+
+  console.log("Resettata animazione");
+}
+
+// CORRECT ANSW CIRCLE
+function generateAnswerCircleProgressBar(wrongAnsw) {
+  let countPercent = 0;
+
+  let progress = setInterval(() => {
+    countPercent++;
+
+    /* valueContainer.textContent = `${countPercent}%`; // NON SERVE */
+    progressBar.style.background = `conic-gradient(#C2128D ${
+      countPercent * 3.6
+    }deg, #00FFFF ${countPercent * 3.6}deg)`;
+
+    if (countPercent == wrongAnsw) {
+      clearInterval(progress);
     }
+  }, SPEED_ANSWER_BAR);
 }
 
 // COSTANT AND VARIABLES
@@ -200,14 +249,29 @@ let wrongAnswers = 0;
 let timer;
 const TOTAL_SECONDS_TIMER = 30;
 const SPEED_TIMER = 1000; //ms
+const SPEED_ANSWER_BAR = 30;
 let timerCount = TOTAL_SECONDS_TIMER;
 const timerDiv = document.querySelector("#timer");
+
+//animation timer
+const timerNumber = document.querySelector("#timerNumber");
+const timerSvg = document.querySelector("#timerSvg");
+/* console.log(timerSvg); */
 
 //DOM selection
 const firstPage = document.querySelector("section");
 const secondPage = document.querySelector("#quizContainer");
 const thirdPage = document.querySelector("#resultsContainer");
 const fourthPage = document.querySelector("#rateUs");
+
+// CIRCULAR ANSWER DOM
+let progressBar = document.querySelector("#answerProgressBar");
+let valueContainer = document.querySelector(
+  "#answerProgressBar .valueContainer"
+);
+
+// TIMER DOM
+const circle = document.querySelector(".circle");
 
 // Btn selection
 const proceedButton = document.querySelector("#proceedBtn");
