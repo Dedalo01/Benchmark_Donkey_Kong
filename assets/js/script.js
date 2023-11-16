@@ -309,13 +309,3 @@ function removeStars() {
     divStars[i].classList.add("star");
   }
 }
-
-function starAnimation() {
-  if (isClicked == false) {
-    for (let i = 0; i < divStars.length; i++) {
-      divStars[i].addEventListener("mouseover", () => {
-        changeColor(i);
-      });
-    }
-  }
-}

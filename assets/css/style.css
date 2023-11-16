@@ -110,6 +110,7 @@ section ul {
   display: none;
 }
 
+/* stars */
 .divStar {
   display: inline-block;
 }
@@ -162,7 +163,7 @@ section ul {
   font-weight: bold;
 }
 
-svg {
+#timerSvg {
   position: absolute;
   top: 63.3%;
   left: 0;
