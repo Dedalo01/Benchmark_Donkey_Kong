@@ -89,7 +89,7 @@ function showResult() {
 }
 //this function shows the paragraph inside the circular diagram in div3
 function showCongratulations() {
-  const circleAnswers = document.querySelector("#donut"); //this needs to be fixed with the circular diagram
+  const circleAnswers = document.querySelector(".valueContainer"); //this needs to be fixed with the circular diagram
   const rightAnswerInPercentage = document.querySelector(
     "#correct-result p:nth-child(2)"
   );
@@ -127,6 +127,7 @@ function setTimer() {
 // Timer animation
 function timerAnimation() {
   timerNumber.innerText = timerCount;
+  const circleAnimation = document.querySelector(".circle");
 }
 
 // CORRECT ANSW CIRCLE
@@ -136,7 +137,7 @@ function generateAnswerCircleProgressBar(wrongAnsw) {
   let progress = setInterval(() => {
     countPercent++;
 
-    valueContainer.textContent = `${countPercent}%`;
+    /* valueContainer.textContent = `${countPercent}%`; // NON SERVE */
     progressBar.style.background = `conic-gradient(#C2128D ${
       countPercent * 3.6
     }deg, #00FFFF ${countPercent * 3.6}deg)`;

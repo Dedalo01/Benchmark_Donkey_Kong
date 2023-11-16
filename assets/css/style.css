@@ -57,9 +57,12 @@ circle {
   fill: none;
   stroke: cornflowerblue;
   stroke-width: 20px;
-  stroke-dasharray: 472;
-  stroke-dashoffset: 472;
-  /*   animation: anim 2s linear forwards; */
+  stroke-dasharray: 472px;
+  stroke-dashoffset: 0;
+}
+
+.animation {
+  animation: anim 30s linear forwards;
 }
 
 svg {
@@ -69,8 +72,12 @@ svg {
 }
 
 @keyframes anim {
-  100% {
-    stroke-dashoffset: 165;
+  from {
+    stroke-dashoffset: 0px;
+  }
+
+  to {
+    stroke-dashoffset: 472px;
   }
 }
 
@@ -89,7 +96,7 @@ svg {
   position: relative;
   height: 250px;
   width: 250px;
-  background-color: green;
+
   border-radius: 50%;
   display: grid;
   place-items: center;
