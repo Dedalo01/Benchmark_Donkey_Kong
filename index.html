@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+</head>
 
 <body>
     <header>
@@ -16,9 +16,9 @@
     </header>
     <main>
         <section>
-            <h1>Welcome to <br> your exam</h1> 
+            <h1>Welcome to your exam</h1>
             <h2>Instructions</h2>
-            <p>We don't expect most engineers to know the answers to all of these  questions, so don't worry if you are
+            <p>We don't expect most engineers to know the answers to all of these questions, so don't worry if you are
                 unsure of a few of them</p>
             <ul>
                 <li>Each question is <span>timed</span> and can only be <span>answered once</span>.</li>
@@ -27,24 +27,28 @@
             </ul>
             <input type="checkbox">
             <label for="check"><span>I promise to answer myself without help from anyone</span></label>
-            <button class="blueButton">PROCEDI</button>
+            <button id="proceedBtn" class="blueButton">PROCEDI</button>
         </section>
 
-        <div id="quizContainer">
+        <div id="quizContainer" class="hide">
             <div id="timer"></div>
-            <h2>How can I create a <br> <span>checkbox in HTML?</span></h2>
             <div id="quiz" class="question"></div>
             <div id="options" class="options"></div>
         </div>
-        <div id="resultsContainer">
+        <div id="resultsContainer" class="hide">
             <h3>Results</h3>
             <p>The summary of your answers:</p>
-            <div id="correct-result"></div>
+            <div id="correct-result">
+                <p>Correct</p>
+            </div>
             <!--qua ci va il doughnut diagram-->
-            <div id="wrong-result"></div>
-            <button><span>RATE US</span></button>
+            <div id="donut"></div>
+            <div id="wrong-result">
+                <p>Wrong</p>
+            </div>
+            <button id="rateUsBtn" class="blueButton"><span>RATE US</span></button>
         </div>
-        <div id="rateUs">
+        <div id="rateUs" class="hide">
             <div>
                 <h3>Tell us how it's going</h3>
                 <p>From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?</p>
@@ -52,8 +56,8 @@
             <div id="stars"></div>
             <div>
                 <p>Leave us an open feedback about your experience so far</p>
-                <input type="text" name="comment" id="comment" placeholder="Write your comment here"> <br>
-                <button class="blueButton2">MORE INFO</button>
+                <input type="text" name="comment" id="comment" placeholder="Write your comment here">
+                <button class="blueButton">MORE INFO</button>
             </div>
         </div>
 

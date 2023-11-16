@@ -41,8 +41,13 @@ section ul{
    margin-left: 80%;
    margin-bottom: 11%;
    border-style: solid;
-   font-size: 170%;
-   background-color: aqua;
+   font-size: 120%;
+   background-color: transparent;
+   color: white;
+}
+
+.blueButton:hover{
+    background-color: aqua;
 }
 
 #quizContainer{
@@ -54,20 +59,13 @@ section ul{
 #resultsContainer{
    text-align: center;
    font-size: xx-large;
-    display:none  ;
 }
 
 #resultsContainer h3{
     font-family: 'Outfit' sans-serif;
 }
 
-#resultsContainer button{
-    border-style: solids;
-    font-size: 120%;
-    background-color: transparent;
-    color: white;
-    padding: 0% 3%;
-}
+
 
 #rateUs{
     text-align: center;
@@ -86,12 +84,6 @@ section ul{
     font-family: 'Outfit' sans-serif;
 }
 
-.blueButton2{
-    border-style: solid;
-   font-size: 170%;
-   background-color: aqua;
+.hide{
+    display: none;
 }
-
-
-
-
