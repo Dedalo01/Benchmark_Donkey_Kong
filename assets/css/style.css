@@ -1,38 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
 
-html {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* html {
+
+} */
+
 body {
   background-color: #0c113b;
-  background: #0c113b url("/assets/img/bg.jpg") no-repeat top center;
-  max-width: 900px;
+  background: #0c113b url("/assets/img/bg.jpg") no-repeat center/cover;
   height: 100vh;
+  width: 100vw;
   font-family: "Inter", sans-serif;
   color: white;
+  /*  max-width: 1000px; */
+  /*   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
 }
 
 header {
-  height: 10%;
+  height: 15%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
+
 header img {
-  width: 15%;
-  padding-left: 7%;
-  padding-top: 3%;
+  height: 30px;
+  margin: 3% 0;
 }
 
 main {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin: 3% 0;
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 section {
   text-align: left;
+  flex: 1;
 }
 
 section h1 {
@@ -61,26 +68,35 @@ section ul li {
   margin: 1% 0;
 }
 
+section ul li span {
+  font-weight: bold;
+}
+
 section label {
   font-size: 0.7rem;
 }
 
 #proceedNextPage {
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .blueButton {
-  padding: 2% 6%;
+  padding: 2% 7%;
   border-style: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   background-color: #00ffff;
   color: black;
   font-family: "Outfit", sans-serif;
-  box-shadow: 0 0 25px #00ffff;
+
   cursor: pointer;
+}
+
+.blueButton:hover {
+  box-shadow: 0 0 25px #00ffff;
 }
 
 /* PAGE 2 */
@@ -90,6 +106,7 @@ section label {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  width: 100%;
 }
 
 #timer {
@@ -114,8 +131,10 @@ section label {
 
 #quizContainer .option {
   font-family: "Inter", sans-serif;
-  padding: 15px 0;
-  width: 250px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 2% 0;
+  flex-basis: 40%;
   margin: 2%;
   background-color: rgba(61, 61, 61, 0.3);
   color: white;
@@ -132,34 +151,46 @@ section label {
   position: absolute;
   bottom: 10%;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 /* PAGE 3 */
 #resultsContainer {
   /* display: flex; */
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   text-align: center;
+  width: 70%;
+}
+
+#resultsContainer > div {
+  padding: 4%;
 }
 
 #resultsContainer h3 {
   font-size: 2.7rem;
   font-weight: bold;
+  margin-bottom: 2%;
 }
 
 #infoGraphic {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   gap: 5%;
 }
 
 /* correct and wrong div */
 
+#correct-result,
+#wrong-result {
+  color: white; /* temporaneo gae */
+}
+
 #correct-result p:nth-child(1),
 #wrong-result p:nth-child(1) {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 #correct-result p:nth-child(2),
@@ -173,6 +204,10 @@ section label {
   font-size: 0.7rem;
 }
 
+#correct-result {
+  text-align: left;
+}
+
 #wrong-result {
   text-align: right;
 }
@@ -180,6 +215,14 @@ section label {
 /* donut */
 #donut {
   text-align: center;
+  margin-left: -2%;
+  height: 300px;
+  width: 300px;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
 }
 
 #donut h4,
@@ -208,16 +251,23 @@ h5 {
   border: 2px solid white;
   color: white;
   padding: 2% 10%;
-  margin: 5%;
+  margin: 5% auto;
+}
+
+#rateUsBtn:hover {
+  color: black;
+  background-color: white;
+  border: 4px solid black;
 }
 
 /* PAGE 4 */
 #rateUs {
   /*   display: flex; */
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  margin-top: 4%;
 }
 
 #rateUs h3 {
@@ -229,6 +279,7 @@ h5 {
 #rateUs > div p {
   margin: 2% 0;
   padding: 3%;
+  font-size: 1.3rem;
 }
 
 #leaveFeedback {
@@ -237,12 +288,18 @@ h5 {
 
 #leaveFeedback input {
   display: block;
-  width: 100%;
+  width: 80%;
   background-color: transparent;
   border: none;
   border-bottom: #d20094 solid 2px;
   padding: 1% 5%;
   color: white;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+#leaveFeedback input:focus {
+  outline: none;
 }
 
 #leaveFeedback button {
@@ -274,49 +331,68 @@ h5 {
 }
 
 .skill {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   position: relative;
 }
 
 .outer {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(145, 145, 145, 0.374);
   box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-    6px 6px 10px -1px rgba(255, 255, 255, 0.7);
+    6px 6px 10px -1px rgba(30, 30, 30, 0.7);
 }
 
 .inner {
-  height: 75px;
-  width: 75px;
+  height: 77%;
+  width: 77%;
   border-radius: 50%;
+  background-color: #632572;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 6px -1px rgba(255, 255, 0255, 0.7),
-    -0.5px -0.5px 0px rgba(255, 255, 0255, 1),
-    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+    inset -4px -4px 6px -1px rgba(77, 77, 77, 0.7),
+    -0.5px -0.5px 0px rgb(22, 22, 22), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+    0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+#timerInfo span {
+  display: block;
+}
+
+#timerInfo span:first-child,
+#timerInfo span:last-child {
+  font-size: 0.55rem;
+  margin: 4% 0;
+  color: rgb(176, 176, 176);
+  text-transform: uppercase;
+}
+
+#timerInfo span:first-child {
+  font-weight: bold;
 }
 
 #timerNumber {
-  font-weight: bold;
+  font-size: 2.5rem;
 }
 
 #timerSvg {
   position: absolute;
   top: 0;
   left: 0;
+  transform: rotate(270deg);
 }
 
 .startAnimation {
-  stroke-dasharray: 472; /*472px*/
+  stroke-dasharray: 380; /*472px*/
   stroke-dashoffset: 0;
-  animation: anim 30s forwards linear;
+  animation: anim 30s backwards linear;
 }
 
 @keyframes anim {
@@ -325,16 +401,12 @@ h5 {
   }
 
   to {
-    stroke-dashoffset: 472;
+    stroke-dashoffset: 380;
   }
 }
 
 /* ANSWER PROGRESS BAR */
 .container {
-  height: 300px;
-  width: 300px;
-  /*   background-color: white; */
-  border-radius: 8px;
   display: grid;
   place-items: center;
   color: white;
