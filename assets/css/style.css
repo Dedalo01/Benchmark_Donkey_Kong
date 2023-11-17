@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
 
-/* html {
-
-} */
-
 body {
   background-color: #0c113b;
   background: #0c113b url("/assets/img/bg.jpg") no-repeat center/cover;
@@ -123,7 +119,6 @@ section label {
 
 /* PAGE 2 */
 #quizContainer {
-  /*  display: flex; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -181,7 +176,6 @@ section label {
 
 /* PAGE 3 */
 #resultsContainer {
-  /* display: flex; */
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
@@ -299,7 +293,6 @@ h5 {
 
 /* PAGE 4 */
 #rateUs {
-  /*   display: flex; */
   align-items: stretch;
   justify-content: center;
   flex-direction: column;
@@ -431,7 +424,7 @@ h5 {
 }
 
 .startAnimation {
-  stroke-dasharray: 380; /*472px*/
+  stroke-dasharray: 380; 
   stroke-dashoffset: 0;
   animation: anim 30s backwards linear;
 }

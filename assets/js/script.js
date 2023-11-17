@@ -1,6 +1,5 @@
 // FUNCTIONS
 
-// testing, decommenta dopo finito
 function hideShow(div1, div2) {
   div1.classList.remove("addDisplayFlex");
   div1.classList.add("hide");
@@ -66,15 +65,14 @@ function shuffleArray(array) {
 
 // third page functions
 function showResult() {
-  //in this function the proceed button(div1) function is also need to be added for hidden/show next page
   const totalQuestions = questions.length;
   let rightToFix = (score * 100) / totalQuestions;
   let wrongToFix = (wrongAnswers * 100) / totalQuestions;
-  let rightPercentage = rightToFix.toFixed(1); //toFixed returns a string, so parseFloat needed
+  let rightPercentage = rightToFix.toFixed(1);
   let wrongPercentage = wrongToFix.toFixed(1);
   const correctDiv = document.querySelector("#correct-result");
   const wrongDiv = document.querySelector("#wrong-result");
-  const rightPercent = document.createElement("p"); //lui mi serve nell'if è il terzo p dentro al div di correct
+  const rightPercent = document.createElement("p");
   const wrongPercent = document.createElement("p");
   rightPercent.innerHTML = `${rightPercentage}&percnt;`;
   // added gae
@@ -94,15 +92,14 @@ function showResult() {
 }
 //this function shows the paragraph inside the circular diagram in div3
 function showCongratulations() {
-  const circleAnswers = document.querySelector(".valueContainer"); //this needs to be fixed with the circular diagram
+  const circleAnswers = document.querySelector(".valueContainer");
   const rightAnswerInPercentage = document.querySelector(
     "#correct-result p:nth-child(2)"
   );
-  const resultPercent = rightAnswerInPercentage.textContent; //I need the percentage of right answers
+  const resultPercent = rightAnswerInPercentage.textContent;
   const resultPercentNum = parseInt(resultPercent);
   const examResults = document.createElement("p");
   if (resultPercentNum >= 60) {
-    //the first two text rows have different CSS rules, inside the span tags
     examResults.innerHTML = `<h4>Congratulations!</h4>
       <h5>You passed the exam!.</h5>
       <p>We'll send you the certificate in few minutes.
@@ -122,7 +119,6 @@ function setTimer() {
     timerCount--;
     circle.classList.add("startAnimation");
   }
-  console.log(timerCount);
 
   if (timerCount == 0) {
     // manda avanti domanda
@@ -149,7 +145,6 @@ function resetAnimation() {
     circle.classList.add("startAnimation");
   }, 10);
 
-  console.log("Resettata animazione");
 }
 
 // CORRECT ANSW CIRCLE
@@ -159,7 +154,6 @@ function generateAnswerCircleProgressBar(wrongAnsw) {
   let progress = setInterval(() => {
     countPercent++;
 
-    /* valueContainer.textContent = `${countPercent}%`; // NON SERVE */
     progressBar.style.background = `conic-gradient(
       #C2128D ${countPercent * 3.6}deg, 
     #00FFFF ${countPercent * 3.6}deg)`;
@@ -254,7 +248,6 @@ const timerDiv = document.querySelector("#timer");
 //animation timer
 const timerNumber = document.querySelector("#timerNumber");
 const timerSvg = document.querySelector("#timerSvg");
-/* console.log(timerSvg); */
 
 //DOM selection
 const firstPage = document.querySelector("section");
@@ -276,7 +269,6 @@ const proceedButton = document.querySelector("#proceedBtn");
 const rateUsButton = document.querySelector("#rateUsBtn");
 
 // EventListeners
-
 proceedButton.addEventListener("click", function () {
   const checkbox = document.getElementById("check");
   if (checkbox.checked) {
@@ -328,4 +320,17 @@ function changeColorClick(index) {
       divStars[i].classList.add("star");
     }
   }
+}
+
+let feedbackBtn = document.querySelector("#leaveFeedback button");
+let feedbackInputText = document.querySelector("#comment");
+let feedbackMessage = "";
+
+feedbackBtn.addEventListener("click", salvaFeedback);
+
+function salvaFeedback() {
+  feedbackMessage = feedbackInputText.value;
+
+  feedbackInputText.value = "";
+  alert("Message Feedback: " + feedbackMessage);
 }
