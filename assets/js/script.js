@@ -160,9 +160,9 @@ function generateAnswerCircleProgressBar(wrongAnsw) {
     countPercent++;
 
     /* valueContainer.textContent = `${countPercent}%`; // NON SERVE */
-    progressBar.style.background = `conic-gradient(#C2128D ${
-      countPercent * 3.6
-    }deg, #00FFFF ${countPercent * 3.6}deg)`;
+    progressBar.style.background = `conic-gradient(
+      #C2128D ${countPercent * 3.6}deg, 
+    #00FFFF ${countPercent * 3.6}deg)`;
 
     if (countPercent == wrongAnsw) {
       clearInterval(progress);
