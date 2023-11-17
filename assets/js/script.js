@@ -1,8 +1,10 @@
 // FUNCTIONS
 
-// testing, decommenta dopo finito
 function hideShow(div1, div2) {
+  div1.classList.remove("addDisplayFlex");
   div1.classList.add("hide");
+
+  div2.classList.add("addDisplayFlex");
   div2.classList.remove("hide");
 }
 
@@ -63,15 +65,14 @@ function shuffleArray(array) {
 
 // third page functions
 function showResult() {
-  //in this function the proceed button(div1) function is also need to be added for hidden/show next page
   const totalQuestions = questions.length;
   let rightToFix = (score * 100) / totalQuestions;
   let wrongToFix = (wrongAnswers * 100) / totalQuestions;
-  let rightPercentage = rightToFix.toFixed(1); //toFixed returns a string, so parseFloat needed
+  let rightPercentage = rightToFix.toFixed(1);
   let wrongPercentage = wrongToFix.toFixed(1);
   const correctDiv = document.querySelector("#correct-result");
-  const wrongDiv = document.querySelector("#wrong-result p");
-  const rightPercent = document.createElement("p"); //lui mi serve nell'if è il terzo p dentro al div di correct
+  const wrongDiv = document.querySelector("#wrong-result");
+  const rightPercent = document.createElement("p");
   const wrongPercent = document.createElement("p");
   rightPercent.innerHTML = `${rightPercentage}&percnt;`;
   // added gae
@@ -91,20 +92,24 @@ function showResult() {
 }
 //this function shows the paragraph inside the circular diagram in div3
 function showCongratulations() {
-  const circleAnswers = document.querySelector(".valueContainer"); //this needs to be fixed with the circular diagram
+  const circleAnswers = document.querySelector(".valueContainer");
   const rightAnswerInPercentage = document.querySelector(
     "#correct-result p:nth-child(2)"
   );
-  const resultPercent = rightAnswerInPercentage.textContent; //I need the percentage of right answers
+  const resultPercent = rightAnswerInPercentage.textContent;
   const resultPercentNum = parseInt(resultPercent);
   const examResults = document.createElement("p");
   if (resultPercentNum >= 60) {
-    //the first two text rows have different CSS rules, inside the span tags
-    examResults.innerHTML =
-      "<span>Congratulations!</span> <br> <span>You passed the exam!.</span> <br><br>We'll send you the certificate in few minutes. <br>Check your email (including promotions / spam folder)";
+    examResults.innerHTML = `<h4>Congratulations!</h4>
+      <h5>You passed the exam!.</h5>
+      <p>We'll send you the certificate in few minutes.
+      Check your email (including promotions / spam folder)</p>
+      `;
   } else {
-    examResults.innerHTML =
-      "<span>We're sorry!</span> <br> <span>You didn't pass the exam!</span> <br><br>Don't give up now, you can try again in the next exam period in a few months.";
+    examResults.innerHTML = `<h4>We're sorry!</h4>
+      <h5>You didn't pass the exam!</h5>
+      <p>Don't give up now, you can try again in the next exam period in a few months.</p>
+      `;
   }
   circleAnswers.appendChild(examResults);
 }
@@ -114,7 +119,6 @@ function setTimer() {
     timerCount--;
     circle.classList.add("startAnimation");
   }
-  console.log(timerCount);
 
   if (timerCount == 0) {
     // manda avanti domanda
@@ -141,7 +145,6 @@ function resetAnimation() {
     circle.classList.add("startAnimation");
   }, 10);
 
-  console.log("Resettata animazione");
 }
 
 // CORRECT ANSW CIRCLE
@@ -151,10 +154,9 @@ function generateAnswerCircleProgressBar(wrongAnsw) {
   let progress = setInterval(() => {
     countPercent++;
 
-    /* valueContainer.textContent = `${countPercent}%`; // NON SERVE */
-    progressBar.style.background = `conic-gradient(#C2128D ${
-      countPercent * 3.6
-    }deg, #00FFFF ${countPercent * 3.6}deg)`;
+    progressBar.style.background = `conic-gradient(
+      #C2128D ${countPercent * 3.6}deg, 
+    #00FFFF ${countPercent * 3.6}deg)`;
 
     if (countPercent == wrongAnsw) {
       clearInterval(progress);
@@ -246,7 +248,6 @@ const timerDiv = document.querySelector("#timer");
 //animation timer
 const timerNumber = document.querySelector("#timerNumber");
 const timerSvg = document.querySelector("#timerSvg");
-/* console.log(timerSvg); */
 
 //DOM selection
 const firstPage = document.querySelector("section");
@@ -269,31 +270,39 @@ const rateUsButton = document.querySelector("#rateUsBtn");
 
 // EventListeners
 proceedButton.addEventListener("click", function () {
-  hideShow(firstPage, secondPage);
+  const checkbox = document.getElementById("check");
+  if (checkbox.checked) {
+    hideShow(firstPage, secondPage);
+    loadQuestion();
+  }
 });
-proceedButton.addEventListener("click", function () {
-  loadQuestion();
+rateUsButton.addEventListener("click", function () {
+  hideShow(thirdPage, fourthPage);
 });
 rateUsButton.addEventListener("click", function () {
   hideShow(thirdPage, fourthPage);
 });
 
+// STARS
 const stelle = document.querySelectorAll(".singleStar");
 const divStars = document.querySelectorAll(".star");
-let isClicked = false;
-console.log(isClicked);
+let clicked = false;
 
-// starAnimation();
 for (let i = 0; i < stelle.length; i++) {
+  if (clicked === false) {
+    stelle[i].addEventListener("mouseover", () => {
+      changeColor(i);
+    });
+  }
   stelle[i].addEventListener("click", () => {
-    isClicked = true;
-  });
-  stelle[i].addEventListener("click", () => {
-    changeColor(i);
+    changeColorClick(i);
   });
 }
 
 function changeColor(index) {
+  if (clicked === true) {
+    return;
+  }
   for (let i = 0; i < divStars.length; i++) {
     if (i <= index) {
       divStars[i].classList.remove("star");
@@ -301,11 +310,27 @@ function changeColor(index) {
       divStars[i].classList.add("star");
     }
   }
-  console.log(isClicked);
+}
+function changeColorClick(index) {
+  clicked = true;
+  for (let i = 0; i < divStars.length; i++) {
+    if (i <= index) {
+      divStars[i].classList.remove("star");
+    } else {
+      divStars[i].classList.add("star");
+    }
+  }
 }
 
-function removeStars() {
-  for (let i = 0; i < divStars.length; i++) {
-    divStars[i].classList.add("star");
-  }
+let feedbackBtn = document.querySelector("#leaveFeedback button");
+let feedbackInputText = document.querySelector("#comment");
+let feedbackMessage = "";
+
+feedbackBtn.addEventListener("click", salvaFeedback);
+
+function salvaFeedback() {
+  feedbackMessage = feedbackInputText.value;
+
+  feedbackInputText.value = "";
+  alert("Message Feedback: " + feedbackMessage);
 }

@@ -1,122 +1,356 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
 
 body {
-  background-image: url("/assets/img/bg.jpg");
-  background-size: 100%;
+  background-color: #0c113b;
+  background: #0c113b url("/assets/img/bg.jpg") no-repeat center/cover;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Inter", sans-serif;
   color: white;
-  font-family: "Outfit", sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-main {
-  text-align: center;
+header {
+  height: 15%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 header img {
-  width: 15%;
-  height: auto;
-  padding-left: 7%;
-  padding-top: 3%;
+  height: 30px;
+  margin: 3% 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 section {
   text-align: left;
-  padding-left: 7%;
-}
-
-section > p,
-ul {
-  font-family: "Inter", sans-serif;
+  flex: 1;
+  margin-top: 4%;
 }
 
 section h1 {
-  font-size: 400%;
-  margin: 0;
+  font-size: 4.4rem;
+  font-family: "Outfit", sans-serif;
+  line-height: 0.8;
 }
 
-h1 span {
-  font-weight: 100;
-}
-
-span {
+section h1 span {
   font-weight: bold;
 }
 
 section h2 {
-  font-size: 150%;
-  padding-top: 0.8%;
-  color: #900080;
+  margin: 5% 0 1% 0;
+  font-size: 1.9rem;
   font-weight: bold;
+  color: #d20094;
+  font-family: "Outfit", sans-serif;
 }
 
 section ul {
-  padding-left: 1.5%;
-  padding-top: 2%;
-  list-style: disc;
-  margin-bottom: 6%;
-  line-height: 1.5;
+  margin: 5% 0 8% 2.3%;
+}
+
+section ul li {
+  list-style-type: disc;
+  margin: 1% 0;
+}
+
+section ul li span {
+  font-weight: bold;
+}
+
+section label {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#checkBox{
+  position: relative;
+}
+
+#checkBox input{
+  opacity: 0;
+}
+
+#checkBox label:before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+#checkBox input:checked + label:before {
+  background-color: #00ffff;
+}
+
+#proceedNextPage {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .blueButton {
-  padding: 1% 4%;
-
-  margin-left: 80%;
-  margin-bottom: 11%;
-  border-style: solid;
-  font-size: 120%;
-
+  padding: 2% 6%;
+  border-style: none;
+  font-size: 1.5rem;
   font-weight: bold;
-
-  background-color: transparent;
-  color: white;
-  font-family: "Inter", sans-serif;
+  background-color: #00ffff;
+  color: #0c113b;
+  font-family: "Outfit", sans-serif;
+  cursor: pointer;
 }
 
 .blueButton:hover {
-  background-color: #00ffff;
-  color: #0b113b;
-  box-shadow: 0px 0px 50px 5px #00ffff;
-  border-color: #00ffff;
+  box-shadow: 0 0 25px #00ffff;
 }
 
+/* PAGE 2 */
 #quizContainer {
-  font-size: xx-large;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
+  width: 90%;
+  padding-top: 2%;
+  padding-bottom: 4%;
 }
 
-#quizContainer button {
-  font-family: "Inter", sans-serif;
+#timer {
+  position: fixed;
+  top: 3%;
+  right: 10%;
+}
 
-  background-color: transparent;
+#quiz {
+  font-size: 2rem;
+  font-family: "Outfit", sans-serif;
+  margin: 75px;
+}
+
+#options {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1%;
+}
+
+#quizContainer .option {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 2% 0;
+  flex-basis: 40%;
+  margin: 2%;
+  background-color: rgba(61, 61, 61, 0.3);
   color: white;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 30px;
   border-color: transparent;
   box-shadow: 0px -1px 0px 1px #ffffff;
 }
 
+#quizContainer .option:hover {
+  background-color: #d20094;
+}
+
+#questionCounter {
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px
+}
+
+/* PAGE 3 */
+#resultsContainer {
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  text-align: center;
+  width: 70%;
+}
+
+#resultsContainer > div {
+  padding: 0 4% 7%;
+}
+
+#resultsContainer h3 {
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+#summary p{
+  font-size: 1.4rem;
+}
+
+#infoGraphic {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 15%;
+}
+
+/* correct and wrong div */
+
+#correct-result,
+#wrong-result {
+  color: white;
+  line-height: 1.1;
+}
+
+#correct-result p:nth-child(1),
+#wrong-result p:nth-child(1) {
+  font-size: 2.6rem;
+}
+
+#correct-result p:nth-child(2),
+#wrong-result p:nth-child(2) {
+  font-weight: bold;
+  font-size: 2.2rem;
+}
+
+#correct-result p:last-child,
+#wrong-result p:last-child {
+  font-size: 0.9rem;
+}
+
+#correct-result {
+  text-align: left;
+}
+
+#wrong-result {
+  text-align: right;
+}
+
+/* donut */
+#donut {
+  text-align: center;
+  margin-left: -2%;
+  height: 300px;
+  width: 300px;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+}
+
+#donut h4,
+h5 {
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 1%;
+  font-weight: bold;
+  width: 80%;
+}
+
+#donut h5 {
+  color: #00ffff;
+  margin-bottom: 10%;
+}
+
 #donut p {
-  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  width: 70%;
+  margin: 0 auto;
 }
 
-#comment {
+#donut p:last-child{
+  width: 74%;
+  line-height: 1.1;
+  font-size: 0.7rem;
+}
+
+#rateUsBtn {
   background-color: transparent;
-  color: grey;
-  padding: 0% 5%;
-  border-style: none;
-  text-decoration: underline;
+  box-shadow: none;
+  border: 2px solid white;
+  color: white;
+  padding: 2% 9%;
+  margin: 0% auto;
+  font-size: 1.3rem;
 }
 
-/* testing, decommenta dopo finito */
-.hide {
-  display: none;
+#rateUsBtn:hover {
+  color: black;
+  background-color: #00ffff;
+  box-shadow: 0 0 25px #00ffff;
 }
 
+/* PAGE 4 */
+#rateUs {
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 4%;
+}
+
+#rateUs h3 {
+  font-size: 3rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+}
+
+#rateUs > div p {
+  margin: 2% 0;
+  padding: 2% 15%;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+#leaveFeedback {
+  margin-top: 5%;
+}
+
+#leaveFeedback input {
+  display: block;
+  width: 69%;
+  background-color: transparent;
+  border: none;
+  border-bottom: #d20094 solid 2px;
+  padding: 1% 5%;
+  color: white;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+#leaveFeedback input:focus {
+  outline: none;
+}
+
+#leaveFeedback button {
+  margin-top: 6%;
+}
+
+.addDisplayFlex {
+  display: flex;
+}
 /* stars */
 .divStar {
   display: inline-block;
 }
 
 .star path {
-  fill: #0b113b;
+  fill: #0e154a;
+}
+
+.star path:hover{
+  fill: #2130a3
 }
 
 /* TIMER */
@@ -131,48 +365,68 @@ section ul {
 }
 
 .skill {
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: 130px;
+  position: relative;
 }
 
 .outer {
-  height: 160px;
-  width: 160px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(145, 145, 145, 0.374);
   box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-    6px 6px 10px -1px rgba(255, 255, 255, 0.7);
+    6px 6px 10px -1px rgba(30, 30, 30, 0.7);
 }
 
 .inner {
-  height: 120px;
-  width: 120px;
+  height: 77%;
+  width: 77%;
   border-radius: 50%;
+  background-color: #632572;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
-    inset -4px -4px 6px -1px rgba(255, 255, 0255, 0.7),
-    -0.5px -0.5px 0px rgba(255, 255, 0255, 1),
-    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+    inset -4px -4px 6px -1px rgba(77, 77, 77, 0.7),
+    -0.5px -0.5px 0px rgb(22, 22, 22), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+    0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+#timerInfo span {
+  display: block;
+}
+
+#timerInfo span:first-child,
+#timerInfo span:last-child {
+  font-size: 0.55rem;
+  margin: 4% 0;
+  color: rgb(176, 176, 176);
+  text-transform: uppercase;
+}
+
+#timerInfo span:first-child {
+  font-weight: bold;
 }
 
 #timerNumber {
-  font-weight: bold;
+  font-size: 2.5rem;
 }
 
 #timerSvg {
   position: absolute;
-  top: 63.3%;
+  top: 0;
   left: 0;
+  transform: rotate(270deg);
 }
 
 .startAnimation {
-  stroke-dasharray: 472; /*472px*/
+  stroke-dasharray: 380; 
   stroke-dashoffset: 0;
-  animation: anim 30s forwards linear;
+  animation: anim 30s backwards linear;
 }
 
 @keyframes anim {
@@ -181,16 +435,12 @@ section ul {
   }
 
   to {
-    stroke-dashoffset: 472;
+    stroke-dashoffset: 380;
   }
 }
 
 /* ANSWER PROGRESS BAR */
 .container {
-  height: 300px;
-  width: 300px;
-  /*   background-color: white; */
-  border-radius: 8px;
   display: grid;
   place-items: center;
   color: white;
@@ -198,8 +448,8 @@ section ul {
 
 .circularProgressBar {
   position: relative;
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
 
   border-radius: 50%;
   display: grid;
@@ -209,8 +459,8 @@ section ul {
 .circularProgressBar:before {
   content: "";
   position: absolute;
-  height: 75%;
-  width: 75%;
+  height: 70%;
+  width: 70%;
   background-color: #0c113b;
   border-radius: 50%;
 }
@@ -220,4 +470,8 @@ section ul {
   font-size: 2rem;
 
   text-align: center;
+}
+
+.hide {
+  display: none;
 }

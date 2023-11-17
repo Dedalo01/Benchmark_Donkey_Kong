@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benchmark Donkey kong</title>
-
-
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -16,22 +15,29 @@
     </header>
     <main>
         <section>
-            <h1><span>Welcome to</span> <br> your exam</h1>
+            <h1>Welcome to<br><span>your exam</span></h1>
             <h2>Instructions</h2>
             <p>We don't expect most engineers to know the answers to all of these <br> questions, so don't worry if you
                 are
-                unsure of a few of them</p>
+                unsure of a few of them.</p>
             <ul>
-                <li>Each question is <div>timed</div> and can only be <div>answered once</div>.</li>
-                <li>Changing browser tab or opening other windows will <div>invalidate the question</div>.</li>
-                <li>This exam will take approx. <div>0-5 minutes</div>.</li>
+                <li>Each question is <span>timed</span> and can only be <span>answered once</span>.</li>
+                <li>Changing browser tab or opening other windows will <span>invalidate the question</span>.</li>
+                <li>This exam will take approx. <span>0-5 minutes</span>.</li>
             </ul>
-            <input type="checkbox">
-            <label for="check"><span>I promise to answer myself without help from anyone</span></label>
 
-            <button id="proceedBtn" class="blueButton">PROCEDI</button>
+            <div id="proceedNextPage">
+                <div id="checkBox">
+                    <input type="checkbox" id="check">
+                    <label for="check">I promise to answer myself without help from anyone
+                    </label>
+                </div>
+
+                <button id="proceedBtn" class="blueButton">PROCEED</button>
+            </div>
 
         </section>
+
         <div id="quizContainer" class="hide">
             <div id="timer">
 
@@ -48,39 +54,51 @@
                 </div>
 
                 <div class="timerAnimation">
-                    <svg id="timerSvg" height="160" width="160">
-                        <circle class="circle" cx="80" cy="80" r="70" stroke="rgb(108, 248, 248)" stroke-width="20px"
+                    <svg id="timerSvg" height="130" width="130">
+                        <circle class="circle" cx="65" cy="65" r="58" stroke="rgb(108, 248, 248)" stroke-width="15px"
                             fill="none" />
                     </svg>
                 </div>
             </div>
-            <div id="quiz" class="question"></div>
-            <div id="options" class="options"></div>
+            <div id="questionContainer">
+
+                <div id="quiz" class="question"></div>
+                <div id="options" class="options"></div>
+            </div>
             <p id="questionCounter"></p>
         </div>
+
         <div id="resultsContainer" class="hide">
-            <h3>Results</h3>
-            <p>The summary of your answers:</p>
-            <div id="correct-result">
-                <p>Correct</p>
+            <div id="summary">
+
+                <h3>Results</h3>
+                <p>The summary of your answers:</p>
             </div>
-            <!--qua ci va il doughnut diagram-->
-            <div id="donut">
-                <div class="container">
-                    <div id="answerProgressBar" class="circularProgressBar">
-                        <div class="valueContainer">
-                            <!-- generated dynamically -->
+
+            <div id="infoGraphic">
+                <div id="correct-result">
+                    <p>Correct</p>
+                </div>
+
+                <div id="donut">
+                    <div class="container">
+                        <div id="answerProgressBar" class="circularProgressBar">
+                            <div class="valueContainer">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="wrong-result">
-                <p>Wrong</p>
+
+                <div id="wrong-result">
+                    <p>Wrong</p>
+                </div>
             </div>
 
             <button id="rateUsBtn" class="blueButton"><span>RATE US</span></button>
 
         </div>
+
         <div id="rateUs" class="hide">
             <div>
                 <h3>Tell us how it's going</h3>
@@ -167,11 +185,11 @@
                             fill="#00FFFF" />
                     </svg>
                 </div>
-                <div>
-                    <p>Leave us an open feedback about your experience so far</p>
-                    <input type="text" name="comment" id="comment" placeholder="Write your comment here">
-                    <button>MORE INFO</button>
-                </div>
+            </div>
+            <div id="leaveFeedback">
+                <p>Leave us an open feedback about your experience so far</p>
+                <input type="text" name="comment" id="comment" placeholder="Write your comment here">
+                <button class="blueButton">MORE INFO</button>
             </div>
 
         </div>
