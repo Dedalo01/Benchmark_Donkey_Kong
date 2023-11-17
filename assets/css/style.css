@@ -2,7 +2,8 @@
 
 body {
   background-color: #0c113b;
-  background: #0c113b url("/assets/img/bg.jpg") no-repeat center/cover;
+  /* path changed for GitHub Pages */
+  background: #0c113b url("/Benchmark_Donkey_Kong/assets/img/bg.jpg") no-repeat center/cover;
   height: 100vh;
   width: 100vw;
   font-family: "Inter", sans-serif;
