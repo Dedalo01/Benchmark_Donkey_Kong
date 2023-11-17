@@ -63,6 +63,30 @@ section ul li {
 
 section label {
   font-size: 0.7rem;
+  font-weight: bold;
+}
+
+#checkBox{
+  position: relative;
+}
+
+#checkBox input{
+  opacity: 0;
+}
+
+#checkBox label:before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+#checkBox input:checked + label:before {
+  background-color: #00ffff;
 }
 
 #proceedNextPage {
